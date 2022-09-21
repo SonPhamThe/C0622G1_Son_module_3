@@ -1,0 +1,19 @@
+body {
+  background-image: ;
+}
+h1 {
+  margin-bottom: -9px;
+  color: black;
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+}
+hr {
+  margin-bottom: -5px;
+}
+#elementone {
+  text-indent: 40px;
+  margin-bottom: -5px;
+}
+#elementtwo {
+  margin-bottom: -5px;
+}

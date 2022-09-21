@@ -1,0 +1,12 @@
+h1 {
+  margin-bottom: unset;
+  color: black;
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+}
+hr {
+  margin-bottom: unset;
+}
+#elementone {
+  text-indent: 40px;
+}
