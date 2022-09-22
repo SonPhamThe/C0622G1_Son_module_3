@@ -1,0 +1,19 @@
+#head {
+  height: 100px;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+#main {
+  background-color: white;
+  height: 300px;
+  width: 70%;
+  float: left;  
+}
+
+#sidebarleft {
+  height: ;
+  width: 30%;
+  background-color: bisque;
+  float: left;
+}

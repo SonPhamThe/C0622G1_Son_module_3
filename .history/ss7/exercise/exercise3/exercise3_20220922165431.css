@@ -1,0 +1,82 @@
+#header {
+  background-color: white;
+  height: 120px;
+  width: 100%;
+}
+#main {
+  background-color: blueviolet;
+  float: right;
+  width: 80%;
+  height: 600px;
+}
+#sidebar {
+  background-color: brown;
+  float: right;
+  width: 20%;
+  height: 300px;
+}
+
+#tobigaming {
+  margin-left: 12px;
+  width: 150px;
+  height: 120px;
+  float: left;
+}
+
+#timkiem {
+  padding: 20px;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+
+#search {
+  margin-top: 40px;
+  margin-left: 10px;
+  float: left;
+}
+
+#header ul, #header li {
+  padding: 0;
+  margin: 0;
+}
+
+#header li {
+  position: relative;
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header li a {
+  width: 197px;
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+  background-color: aqua;
+  color: black;
+}
+
+#header ul ul li a {
+  width: 200px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+#header li a:hover{
+  background-color: red;
+}
+
+#header ul ul{
+  position: absolute;
+  top: 30px;
+  left: 15px;
+  visibility: hidden;
+}
+
+#header ul li:hover ul{
+  visibility: visible;
+}

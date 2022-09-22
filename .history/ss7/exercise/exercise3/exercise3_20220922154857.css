@@ -1,0 +1,29 @@
+#header {
+  background-color: white;
+  height: 100px;
+  width: 100%;
+}
+#main {
+  background-color: blueviolet;
+  float: right;
+  width: 80%;
+  height: 600px;
+}
+#sidebar {
+  background-color: brown;
+  float: right;
+  width: 20%;
+  height: 300px;
+}
+
+#tobigaming {
+  margin-left: 12px;
+  width: 150px;
+  height: 100px;
+  float: left;
+}
+
+#timkiem {
+  float: left;
+  width: 4px;
+}

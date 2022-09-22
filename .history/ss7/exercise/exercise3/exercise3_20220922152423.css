@@ -1,0 +1,13 @@
+#header {
+  background-color: aqua;
+  height: 50px;
+  width: 100%;
+}
+#main {
+  background-color: blueviolet;
+  float: right;
+}
+#sidebar {
+  background-color: brown;
+  float: right;
+}

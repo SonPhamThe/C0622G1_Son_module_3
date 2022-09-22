@@ -1,0 +1,19 @@
+#head {
+  background-color: aliceblue;
+}
+
+#main {
+  background-color: aquamarine;
+  float: left;
+}
+
+#sidebarleft {
+  background-color: bisque;
+  float: left;
+  float: right;
+}
+
+#sidebarright {
+  background-color: burlywood;
+  float: right;
+}

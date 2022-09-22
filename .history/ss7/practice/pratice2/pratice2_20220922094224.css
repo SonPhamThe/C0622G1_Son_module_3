@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#menu, #menu ul, #menu li {
+ padding: 0px;
+ margin: 0px;
+}
+
+#menu li {
+  list-style: none;
+  position: relative;
+  width: 100px;
+  height: 30px;
+  padding: 0 20px;
+  background-color: black;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+#menu li a{
+  text-decoration: none;
+  color: aliceblue;
+}
+
+#menu li:hover {
+  background-color: red;
+}
+
+#menu ul 

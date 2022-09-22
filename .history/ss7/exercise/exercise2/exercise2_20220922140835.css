@@ -1,0 +1,24 @@
+#head {
+  height: 100px;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+#main {
+  background-color: red;
+  height: 600px;
+  width: 70%;
+  float: left;  
+}
+
+#sidebarleft {
+  height: 600px;
+  width: 25%;
+  background-color: bisque;
+  float: left;
+}
+
+#facebook {
+  height: 100px;
+
+}
