@@ -1,0 +1,17 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden  ;
+}
+
+.header {
+  height: 124px;
+}
+
+.wrapper {
+  width: 1160px;
+}
+
+.navbar {
+  background-color: ;
+}
