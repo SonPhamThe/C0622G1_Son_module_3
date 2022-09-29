@@ -17,31 +17,35 @@
 <h1>Simple Calculator</h1>
 
 <form action="/cal" method="post">
-    <div class="calculator">
-        <label>First operand:</label>
-        <input type="number" name="first__operand" placeholder="Enter value">
-    </div>
-    <br>
+    <fieldset>
+        <legend>Calculator</legend>
 
-    <div>
-        <label>Operator:</label>
-        <select name="operator" id="operator">
-            <option value="add">addition</option>
-            <option value="div">division</option>
-            <option value="sum">summation</option>
-            <option value="sub">subtraction</option>
-        </select>
-    </div>
-    <br>
+        <div class="calculator">
+            <label>First operand:</label>
+            <input type="number" name="first__operand" placeholder="Enter value">
+        </div>
+        <br>
 
-    <div>
-        <label>Second operand:</label>
-        <input type="number" name="second__operand" placeholder="Enter value">
-    </div>
-    <br> <br>
+        <div>
+            <label>Operator:</label>
+            <select name="operator" id="operator">
+                <option value="add">addition</option>
+                <option value="div">division</option>
+                <option value="sum">summation</option>
+                <option value="sub">subtraction</option>
+            </select>
+        </div>
+        <br>
 
-    <input type="submit" value="Calculate">
+        <div>
+            <label>Second operand:</label>
+            <input type="number" name="second__operand" placeholder="Enter value">
+        </div>
+        <br> <br>
 
+        <input type="submit" value="Calculate">
+        
+    </fieldset>
 </form>
 <p>${result}</p>
 </body>
