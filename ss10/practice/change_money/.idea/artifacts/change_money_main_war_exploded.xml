@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="change_money.main:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/change_money_main_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="change_money.main" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="change_money.main/web/Web Gradle : change_money-1.0-SNAPSHOT.war" />
+    </root>
+  </artifact>
+</component>
