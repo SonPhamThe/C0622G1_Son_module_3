@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="whaut.main:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/whaut_main_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="whaut.main" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="whaut.main/web/Web Gradle : whaut-1.0-SNAPSHOT.war" />
+    </root>
+  </artifact>
+</component>

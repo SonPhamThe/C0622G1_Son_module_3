@@ -44,9 +44,8 @@
         <br> <br>
 
         <input type="submit" value="Calculate">
-        
+
     </fieldset>
 </form>
-<p>${result}</p>
 </body>
 </html>
