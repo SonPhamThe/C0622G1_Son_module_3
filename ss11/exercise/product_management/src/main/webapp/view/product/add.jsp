@@ -1,32 +1,57 @@
 <%--
   Created by IntelliJ IDEA.
   User: mesohuy999
-  Date: 30/09/2022
-  Time: 14:13
+  Date: 01/10/2022
+  Time: 09:35
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add</title>
+    <title>Create new product</title>
+    <style>
+        .message {
+            color: green;
+        }
+    </style>
 </head>
 <body>
-<h1>Trang thêm mới</h1>
-
-<a href="/product">Quay lại trang chủ</a>
-
-<c:if test="${menu != null}">
-    <span>${mess}</span>
-</c:if>
-
-<form action="/product?action=add" method="post">
-    <pre>ID of the product: <input type="text" name="id"></pre>
-    <pre>Name Product: <input type="text" name="nameProduct"></pre>
-    <pre>Price: <input type="text" name="price"></pre>
-    <pre>Description Product: <input type="text" name="description"></pre>
-    <pre>Producer: <input type="text" name="producer"></pre>
-    <pre><button>Save</button></pre>
+<h1>Create new product</h1>
+<p>
+    <c:if test="${message != null}">
+        <span class="message">${message}</span>
+    </c:if>
+</p>
+<p>
+    <a href="/products">Back list product</a>
+</p>
+<form method="post">
+    <fieldset>
+        <legend>Information Product</legend>
+        <table>
+            <tr>
+                <td>Name Product:</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="number" name="price" id="price"></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" name="description" id="description"></td>
+            </tr>
+            <tr>
+                <td>Producer:</td>
+                <td><input type="text" name="producer" id="producer"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create product"></td>
+            </tr>
+        </table>
+    </fieldset>
 </form>
 </body>
 </html>

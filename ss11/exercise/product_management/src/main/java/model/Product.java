@@ -2,19 +2,19 @@ package model;
 
 public class Product {
     private int id;
-    private String nameProduct;
+    private String name;
     private double price;
-    private String descriptionProduct;
+    private String description;
     private String producer;
 
     public Product() {
     }
 
-    public Product(int id, String nameProduct, double price, String descriptionProduct, String producer) {
+    public Product(int id, String name, double price, String description, String producer) {
         this.id = id;
-        this.nameProduct = nameProduct;
+        this.name = name;
         this.price = price;
-        this.descriptionProduct = descriptionProduct;
+        this.description = description;
         this.producer = producer;
     }
 
@@ -26,12 +26,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public String getName() {
+        return name;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrice() {
@@ -42,12 +42,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getDescriptionProduct() {
-        return descriptionProduct;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptionProduct(String descriptionProduct) {
-        this.descriptionProduct = descriptionProduct;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getProducer() {
@@ -58,4 +58,3 @@ public class Product {
         this.producer = producer;
     }
 }
-

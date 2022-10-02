@@ -1,29 +1,36 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: mesohuy999
+  Date: 01/10/2022
+  Time: 10:16
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>View product</title>
+    <title>Information Product</title>
 </head>
 <body>
-<h1>Product details</h1>
+<h1>Thông tin chi tiết sản phẩm</h1>
 <p>
-    <a href="/product">Back to product list</a>
+    <a href="/products">Quay lại Danh sách sản phẩm</a>
 </p>
 <table>
     <tr>
-        <td>Name Product: </td>
-        <td>${requestScope["product"].getNameProduct()}</td>
+        <td>Name Product:</td>
+        <td>${product.getName()}</td>
     </tr>
     <tr>
-        <td>Price: </td>
-        <td>${requestScope["product"].getPrice()}</td>
+        <td>Price:</td>
+        <td>${product.getPrice()}</td>
     </tr>
     <tr>
-        <td>Description Product: </td>
-        <td>${requestScope["product"].getDescriptionProduct()}</td>
+        <td>Description:</td>
+        <td>${product.getDescription()}</td>
     </tr>
     <tr>
-        <td>Producer: </td>
-        <td>${requestScope["product"].getProducer()}</td>
+        <td>Producer:</td>
+        <td>${product.getProducer()}</td>
     </tr>
 </table>
 </body>

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: mesohuy999
-  Date: 30/09/2022
-  Time: 15:09
+  Date: 01/10/2022
+  Time: 09:52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,38 +12,33 @@
 </head>
 <body>
 <h1>Edit product</h1>
-
 <p>
-    <c:if test='${requestScope["message"] != null}'>
-        <span class="message">${requestScope["message"]}</span>
+    <c:if test="${message != null}">
+        <span class="message">${message}</span>
     </c:if>
 </p>
-
 <p>
-    <a href="/product">Back to product list</a>
+    <a href="/products">Back list product</a>
 </p>
-
-<form action="/product">
+<form method="post">
     <fieldset>
-        <legend>Product information</legend>
+        <legend>Information Product</legend>
         <table>
             <tr>
-                <td>Name:</td>
-                <td><input type="text" name="nameProduct" id="name" value="${requestScope["product"].getNameProduct}"></td>
+                <td>Name Product:</td>
+                <td><input type="text" name="name" id="name" value="${product.getName()}"></td>
             </tr>
             <tr>
                 <td>Price:</td>
-                <td><input type="text" name="price" id="price" value="${requestScope["product"].getPrice()}"></td>
+                <td><input type="number" name="price" id="price" value="${product.getPrice()}"></td>
             </tr>
             <tr>
-                <td>Description Product:</td>
-                <td><input type="text" name="descriptionProduct" id="descriptionProduct" value="${requestScope["product"].getDescriptionProduct()}">
-                </td>
+                <td>Description:</td>
+                <td><input type="text" name="description" id="description" value="${product.getDescription()}"></td>
             </tr>
             <tr>
                 <td>Producer:</td>
-                <td><input type="text" name="producer" id="producer" value="${requestScope["product"].getProducer()}">
-                </td>
+                <td><input type="text" name="producer" id="producer" value="${product.getProducer()}"></td>
             </tr>
             <tr>
                 <td></td>

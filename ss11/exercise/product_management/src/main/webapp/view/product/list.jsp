@@ -1,45 +1,41 @@
 <%--
   Created by IntelliJ IDEA.
   User: mesohuy999
-  Date: 30/09/2022
-  Time: 14:24
+  Date: 01/10/2022
+  Time: 09:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-          crossorigin="anonymous">
+    <title>List Product</title>
 </head>
 <body>
-<h1>Trang danh sách sản phẩm</h1>
-
-<c:if test="${mess != null}">
-    <span>${mess}</span>
-</c:if>
-
-<a href="/product?action=add">Thêm mới</a>
-
-<table class="table table-dark">
+<h1>List Product</h1>
+<p>
+    <a href="/products?action=add">Add new product</a>
+    <a href="/products?action=find">Search product</a>
+</p>
+<table border="1">
     <tr>
-        <td>STT</td>
         <td>ID</td>
-        <td>Name Product</td>
+        <td>Name</td>
         <td>Price</td>
-        <td>Description Product</td>
+        <td>Description</td>
         <td>Producer</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
-    <c:forEach var="product" items="${productService}" varStatus="status">
+    <c:forEach items="${products}" var="product">
         <tr>
-            <td>${status.count}</td>
             <td>${product.id}</td>
-            <td>${product.nameProduct}</td>
-            <td>${product.price}</td>
-            <td>${product.descriptionProduct}</td>
-            <td>${product.producer}</td>
+            <td><a href="/products?action=view&id=${product.id}">${product.getName()}</a></td>
+            <td>${product.getPrice()}</td>
+            <td>${product.getDescription()}</td>
+            <td>${product.getProducer()}</td>
+            <td><a href="/products?action=edit&id=${product.getId()}">Edit</a></td>
+            <td><a href="/products?action=delete&id=${product.getId()}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
