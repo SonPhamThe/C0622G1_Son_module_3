@@ -5,6 +5,7 @@ import repository.IRepoProduct;
 import repository.impl.ProductRepo;
 import service.IServiceProduct;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class ProductService implements IServiceProduct {
@@ -12,6 +13,8 @@ public class ProductService implements IServiceProduct {
 
     @Override
     public List<Product> displayAll() {
+        ProductRepo productRepo = new ProductRepo();
+        productRepo.connectMysql();
         return productRepo.displayAll();
     }
 

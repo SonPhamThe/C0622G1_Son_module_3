@@ -3,6 +3,10 @@ package repository.impl;
 import model.Product;
 import repository.IRepoProduct;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,5 +59,16 @@ public class ProductRepo implements IRepoProduct {
     @Override
     public List<Product> findByPrice(double min, double max) {
         return null;
+    }
+
+    public void connectMysql() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/case_study", "root", "mysql123");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from bo_phan");
+            System.out.println(preparedStatement.executeQuery().toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
