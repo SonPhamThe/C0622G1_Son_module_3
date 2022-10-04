@@ -60,8 +60,7 @@ public class UserServlet extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String country = req.getParameter("country");
-
-        User book = new User(id, name, email, country);
+        User book = new User(id,name, email, country);
         userDAO.updateUser(book);
         RequestDispatcher dispatcher = req.getRequestDispatcher("user/edit.jsp");
         dispatcher.forward(req, resp);
@@ -72,7 +71,7 @@ public class UserServlet extends HttpServlet {
         String email = req.getParameter("email");
         String country = req.getParameter("country");
         User newUser = new User(name, email, country);
-        userDAO.insertUser(newUser);
+        userDAO.insertUserStore(newUser);
         RequestDispatcher dispatcher = req.getRequestDispatcher("user/create.jsp");
         dispatcher.forward(req, resp);
     }
@@ -98,6 +97,12 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(req, resp);
                     break;
+                case "permision":
+                    addUserPermision(req,resp);
+                    break;
+                case "test-without-tran":
+                    testWithoutTran(req, resp);
+                    break;
                 default:
                     listUser(req, resp);
                     break;
@@ -105,6 +110,18 @@ public class UserServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new ServletException(e);
         }
+    }
+
+    private void testWithoutTran(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
+        userDAO.insertUpdateWithoutTransaction();
+    }
+
+    private void addUserPermision(HttpServletRequest req, HttpServletResponse resp) {
+        User user = new User("quan", "quan.nguyen@codegym.vn", "vn");
+
+        int[] permision = {1, 2, 4};
+
+        userDAO.addUserTransaction(user, permision);
     }
 
     private void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
@@ -119,7 +136,8 @@ public class UserServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
-        User existingUser = userDAO.selectUser(id);
+//        User existingUser = userDAO.selectUser(id);
+        User existingUser = userDAO.getUserById(id);
         RequestDispatcher dispatcher = req.getRequestDispatcher("user/edit.jsp");
         req.setAttribute("user", existingUser);
         dispatcher.forward(req, resp);

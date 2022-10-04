@@ -45,9 +45,21 @@ public class FacilityServlet extends HttpServlet {
         switch (action) {
             case "add":
                 break;
+            case "page":
+                hhauhuatga(req,resp);
+                break;
             default:
                 pageHome(req, resp);
                 break;
+        }
+    }
+
+    private void hhauhuatga(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("view/facility/page_facility.jsp");
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

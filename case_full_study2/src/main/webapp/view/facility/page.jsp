@@ -60,7 +60,7 @@
 
             </li>
             <li class="list__item d-flex justify-content-center align-items-center"><a href="#">Customer</a></li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="#">Service</a></li>
+            <li class="list__item d-flex justify-content-center align-items-center"><a href="/facilities?action=page" >Service</a></li>
             <li class="list__item d-flex justify-content-center align-items-center"><a href="#">Contract</a></li>
         </ul>
     </div>
