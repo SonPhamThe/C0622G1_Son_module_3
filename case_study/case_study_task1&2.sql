@@ -1,122 +1,123 @@
 DROP DATABASE IF EXISTS case_study;
 CREATE DATABASE case_study;
 USE case_study;
-CREATE TABLE vi_tri (
-    ma_vi_tri INT PRIMARY KEY AUTO_INCREMENT,
-    ten_vi_tri VARCHAR(45)
+CREATE TABLE position (
+    id_position INT PRIMARY KEY AUTO_INCREMENT,
+    name_position VARCHAR(45)
 );
-CREATE TABLE trinh_do (
-    ma_trinh_do INT PRIMARY KEY AUTO_INCREMENT,
-    ten_trinh_do VARCHAR(45)
+CREATE TABLE education_degree (
+    id_education_degree INT PRIMARY KEY AUTO_INCREMENT,
+    name_education_degree VARCHAR(45)
 );
-CREATE TABLE bo_phan (
-    ma_bo_phan INT PRIMARY KEY AUTO_INCREMENT,
-    ten_bo_phan VARCHAR(45)
+CREATE TABLE division (
+    id_division INT PRIMARY KEY AUTO_INCREMENT,
+    name_division VARCHAR(45)
 );
-CREATE TABLE nhan_vien (
-    ma_nhan_vien INT PRIMARY KEY,
-    ho_ten VARCHAR(45),
-    ngay_sinh DATE,
-    so_cmnd VARCHAR(45),
-    luong DOUBLE,
-    so_dien_thoai VARCHAR(45),
-    email VARCHAR(45),
-    dia_chi VARCHAR(45),
-    ma_vi_tri INT NOT NULL,
-	CONSTRAINT fk_htk_ma_vi_tri
-	FOREIGN KEY (ma_vi_tri)
-	REFERENCES vi_tri(ma_vi_tri),
-    ma_trinh_do INT NOT NULL,
-    CONSTRAINT fk_htk_ma_trinh_do
-	FOREIGN KEY (ma_trinh_do)
-	REFERENCES trinh_do(ma_trinh_do),
-    ma_bo_phan INT NOT NULL,
-    CONSTRAINT fk_htk_ma_bo_phan
-	FOREIGN KEY (ma_bo_phan)
-	REFERENCES bo_phan(ma_bo_phan)
+CREATE TABLE employee (
+    id_employee INT PRIMARY KEY,
+    name_employee VARCHAR(45),
+    date_of_birth_employee DATE,
+    id_card_employee VARCHAR(45),
+    salary_employee DOUBLE,
+    phone_number_employee VARCHAR(45),
+    email_employee VARCHAR(45),
+    address_employee VARCHAR(45),
+    id_position INT NOT NULL,
+	CONSTRAINT fk_htk_id_position
+	FOREIGN KEY (id_position)
+	REFERENCES `position`(id_position),
+    id_education_degree INT NOT NULL,
+    CONSTRAINT fk_htk_id_education_degree
+	FOREIGN KEY (id_education_degree)
+	REFERENCES education_degree(id_education_degree),
+    id_division INT NOT NULL,
+    CONSTRAINT fk_htk_id_division
+	FOREIGN KEY (id_division)
+	REFERENCES division(id_division)
 );
-CREATE TABLE loai_khach(
-	ma_loai_khach INT PRIMARY KEY AUTO_INCREMENT,
-	ten_loai_khach VARCHAR(45)
+CREATE TABLE customer_type(
+	id_customer_type INT PRIMARY KEY AUTO_INCREMENT,
+	name_customer_type VARCHAR(45)
 );
-CREATE TABLE loai_dich_vu(
-	ma_loai_dich_vu INT PRIMARY KEY AUTO_INCREMENT,
-	ten_loai_dich_vu VARCHAR(45)
+CREATE TABLE facility_type(
+	id_facility_type INT PRIMARY KEY AUTO_INCREMENT,
+	name_facility_type VARCHAR(45)
 );
-CREATE TABLE kieu_thue(
-	ma_kieu_thue INT PRIMARY KEY AUTO_INCREMENT,
-	ten_kieu_thue VARCHAR(45)
+CREATE TABLE rent_type(
+	id_rent_type INT PRIMARY KEY AUTO_INCREMENT,
+	name_rent_type VARCHAR(45)
 );
-CREATE TABLE khach_hang(
-	ma_khach_hang INT PRIMARY KEY,
-	ho_ten VARCHAR(45),
-	ngay_sinh DATE,
-	gioi_tinh BIT(1),
-	so_cmnd VARCHAR(45),
-	so_dien_thoai VARCHAR(45),
-	email VARCHAR(45),
-	dia_chi VARCHAR(45),
-	ma_loai_khach INT NOT NULL,
-    CONSTRAINT fk_htk_ma_loai_khach
-	FOREIGN KEY (ma_loai_khach)
-	REFERENCES loai_khach(ma_loai_khach)
-);
-
-CREATE TABLE dich_vu_di_kem(
-	ma_dich_vu_di_kem INT PRIMARY KEY,
-	ten_dich_vu_di_kem VARCHAR(45),
-	gia DOUBLE,
-	don_vi VARCHAR(10),
-    trang_thai VARCHAR(45)
-);
-CREATE TABLE dich_vu(
-	ma_dich_vu INT PRIMARY KEY,
-	ten_dich_vu VARCHAR(45),
-	dien_tich INT,
-    chi_phi_thue DOUBLE,
-	so_nguoi_toi_da INT,
-	tieu_chuan_phong VARCHAR(45),
-    mo_ta_tien_nghi_khac VARCHAR(45),
-    dien_tich_ho_boi DOUBLE,
-    so_tang INT,
-    dich_vu_mien_phi_di_kem TEXT,
-	ma_kieu_thue INT NOT NULL,
-	CONSTRAINT fk_htk_ma_kieu_thue
-	FOREIGN KEY (ma_kieu_thue)
-	REFERENCES kieu_thue(ma_kieu_thue),
-	ma_loai_dich_vu INT NOT NULL,
-	CONSTRAINT fk_htk_ma_loai_dich_vu
-	FOREIGN KEY (ma_loai_dich_vu)
-	REFERENCES loai_dich_vu(ma_loai_dich_vu)
+CREATE TABLE customer(
+	id_customer INT PRIMARY KEY,
+	name_customer VARCHAR(45),
+	date_of_birth_customer DATE,
+	gender_customer BIT(1),
+	id_card_customer VARCHAR(45),
+	phone_number_customer VARCHAR(45),
+	email_customer VARCHAR(45),
+	address_customer VARCHAR(45),
+	id_customer_type INT NOT NULL,
+    CONSTRAINT fk_htk_id_customer_type
+	FOREIGN KEY (id_customer_type)
+	REFERENCES customer_type(id_customer_type)
 );
 
-CREATE TABLE hop_dong(
-	ma_hop_dong INT PRIMARY KEY,
-	ngay_lam_hop_dong DATETIME,
-	ngay_ket_thuc DATETIME,
-	tien_dat_coc DOUBLE,
-	ma_nhan_vien INT NOT NULL,
-    CONSTRAINT fk_htk_ma_nhan_vien
-	FOREIGN KEY (ma_nhan_vien)
-	REFERENCES nhan_vien(ma_nhan_vien),
-	ma_khach_hang INT NOT NULL,
-	CONSTRAINT fk_htk_ma_khach_hang
-	FOREIGN KEY (ma_khach_hang)
-	REFERENCES khach_hang(ma_khach_hang),
-	ma_dich_vu INT NOT NULL,
-    CONSTRAINT fk_htk_ma_dich_vu
-	FOREIGN KEY (ma_dich_vu)
-	REFERENCES dich_vu(ma_dich_vu)
+CREATE TABLE attach_facility(
+	id_attach_facility INT PRIMARY KEY,
+	name_attach_facility VARCHAR(45),
+	cost_attach_facility DOUBLE,
+	unit_attach_facility VARCHAR(10),
+    status_attach_facility VARCHAR(45)
 );
-CREATE TABLE hop_dong_chi_tiet(
-	ma_hop_dong_chi_tiet INT PRIMARY KEY,
-    so_luong INT,
-	ma_hop_dong INT NOT NULL,
-    CONSTRAINT fk_htk_ma_hop_dong
-	FOREIGN KEY (ma_hop_dong)
-	REFERENCES hop_dong(ma_hop_dong),
-	ma_dich_vu_di_kem INT NOT NULL,
-    CONSTRAINT fk_htk_ma_dich_vu_di_kem
-	FOREIGN KEY (ma_dich_vu_di_kem)
-	REFERENCES dich_vu_di_kem(ma_dich_vu_di_kem)
+
+CREATE TABLE facility(
+	id_facility INT PRIMARY KEY,
+	name_facility VARCHAR(45),
+	area_facility INT,
+    cost_facility DOUBLE,
+	max_people_facility INT,
+	standard_room VARCHAR(45),
+    description_other_convenience VARCHAR(45),
+    pool_area DOUBLE,
+    number_of_floors INT,
+    facility_free TEXT,
+	id_rent_type INT NOT NULL,
+	CONSTRAINT fk_htk_id_rent_type
+	FOREIGN KEY (id_rent_type)
+	REFERENCES rent_type(id_rent_type),
+	id_facility_type INT NOT NULL,
+	CONSTRAINT fk_htk_id_facility_type
+	FOREIGN KEY (id_facility_type)
+	REFERENCES facility_type(id_facility_type)
+);
+
+CREATE TABLE contract(
+	id_contract INT PRIMARY KEY,
+	start_date DATETIME,
+	end_date DATETIME,
+	deposit DOUBLE,
+	id_employee INT NOT NULL,
+    CONSTRAINT fk_htk_id_employee
+	FOREIGN KEY (id_employee)
+	REFERENCES employee(id_employee),
+	id_customer INT NOT NULL,
+	CONSTRAINT fk_htk_id_customer 
+	FOREIGN KEY (id_customer )
+	REFERENCES customer(id_customer),
+	id_facility  INT NOT NULL,
+    CONSTRAINT fk_htk_id_facility 
+	FOREIGN KEY (id_facility)
+	REFERENCES facility(id_facility)
+);
+CREATE TABLE contract_detail(
+	id_contract_detail INT PRIMARY KEY,
+    quantity INT,
+	id_contract INT NOT NULL,
+    CONSTRAINT fk_htk_id_contract
+	FOREIGN KEY (id_contract)
+	REFERENCES contract(id_contract),
+	id_attach_facility INT NOT NULL,
+    CONSTRAINT fk_htk_id_attach_facility
+	FOREIGN KEY (id_attach_facility)
+	REFERENCES attach_facility(id_attach_facility)
 );

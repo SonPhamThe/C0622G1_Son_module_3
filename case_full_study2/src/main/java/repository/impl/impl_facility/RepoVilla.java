@@ -9,6 +9,8 @@ import java.util.List;
 public class RepoVilla implements IRepoVilla {
     private static List<Villa> villas = new ArrayList<>();
 
+    private static final String SELECT_VILLA = "SELECT * FROM dich_vu dv WHERE dv.ma_loai_dich_vu = 1;";
+
     @Override
     public List<Villa> displayAll() {
         return villas;

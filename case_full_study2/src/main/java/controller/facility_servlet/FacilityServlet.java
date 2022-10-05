@@ -46,7 +46,7 @@ public class FacilityServlet extends HttpServlet {
             case "add":
                 break;
             case "page":
-                hhauhuatga(req,resp);
+                movePageService(req,resp);
                 break;
             default:
                 pageHome(req, resp);
@@ -54,8 +54,8 @@ public class FacilityServlet extends HttpServlet {
         }
     }
 
-    private void hhauhuatga(HttpServletRequest req, HttpServletResponse resp) {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("view/facility/page_facility.jsp");
+    private void movePageService(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("view/facility/page_service.jsp");
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException | IOException e) {

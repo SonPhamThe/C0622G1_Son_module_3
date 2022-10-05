@@ -7,12 +7,12 @@ public class Facility {
     private double area;
     private double cost;
     private int max_people;
-    private Date rent_type;
+    private String rent_type;
 
     public Facility() {
     }
 
-    public Facility(String name, double area, double cost, int max_people, Date rent_type) {
+    public Facility(String name, double area, double cost, int max_people, String rent_type) {
         this.name = name;
         this.area = area;
         this.cost = cost;
@@ -52,11 +52,11 @@ public class Facility {
         this.max_people = max_people;
     }
 
-    public Date getRent_type() {
+    public String getRent_type() {
         return rent_type;
     }
 
-    public void setRent_type(Date rent_type) {
+    public void setRent_type(String rent_type) {
         this.rent_type = rent_type;
     }
 }

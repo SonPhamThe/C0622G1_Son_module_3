@@ -139,7 +139,7 @@ SELECT * FROM khach_hang;
 -- Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
 SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM khach_hang kh 
-WHERE kh.ma_khach_hang IN (SELECT hd.ma_khach_hang FROM hop_dong hd WHERE year(hd.ngay_lam_hop_dong) < 2021);
+WHERE kh.ma_khach_hang IN (SELECT hd.ma_khach_hang FROM hop_dong hd WHERE year(hd.ngay_lam_hmax_so_luongop_dong) < 2021);
 -- yêu cầu 19
 -- Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
 UPDATE dich_vu_di_kem dvdk JOIN hop_dong_chi_tiet hdct 

@@ -77,3 +77,5 @@ SUM(ifnull(hdct.so_luong,0)) as tong_so
 FROM hop_dong hd
 LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 GROUP BY hd.ma_hop_dong;
+
+SELECT * FROM dich_vu dv WHERE dv.ma_loai_dich_vu = 1;

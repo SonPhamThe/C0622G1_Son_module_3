@@ -23,7 +23,7 @@
         <div class="header__contact d-flex">
             <div class="address flex-fill">
                 <div class="d-flex">
-                    <img src="" alt="" class="me-5"/>
+                    <img src="./images/map.svg" alt="" class="me-5"/>
                     <div class="d-flex flex-column">
                         <p class="mb-3">103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ, Quận Ngũ hành Sơn, Tp. Đà Nẵng,
                             Việt Nam</p>
@@ -60,7 +60,8 @@
 
             </li>
             <li class="list__item d-flex justify-content-center align-items-center"><a href="#">Customer</a></li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="/facilities?action=page" >Service</a></li>
+            <li class="list__item d-flex justify-content-center align-items-center"><a href="/facilities?action=page">Service</a>
+            </li>
             <li class="list__item d-flex justify-content-center align-items-center"><a href="#">Contract</a></li>
         </ul>
     </div>
@@ -205,7 +206,6 @@
             <div class="col-6 mt-auto mb-5">
                 <p class="fs-5 text-uppercase text-dark fw-bold">Our Brands</p>
                 <div class="d-flex mt-4">
-                    <img class="footer__brand-logo" src="./images/LOGOFurama_4C_Normal.png" alt="">
                     <img class="footer__brand-logo" src="./images/xclusive.png" alt="">
                     <img class="footer__brand-logo" src="./images/fx.png" alt="">
                 </div>
@@ -254,6 +254,7 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
 </body>
 </html>
