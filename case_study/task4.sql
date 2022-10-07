@@ -79,3 +79,5 @@ LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 GROUP BY hd.ma_hop_dong;
 
 SELECT * FROM dich_vu dv WHERE dv.ma_loai_dich_vu = 1;
+
+SELECT * FROM facility WHERE facility.name_facility LIKE "%villa%";

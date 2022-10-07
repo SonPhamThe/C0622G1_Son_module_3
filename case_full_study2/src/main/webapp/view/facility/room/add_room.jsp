@@ -37,25 +37,25 @@
             <tr>
                 <th>Cost Room:</th>
                 <td>
-                    <input type="text" name="cost" id="cost" size="15"/>
+                    <input type="text" name="cost" id="cost" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Max People:</th>
                 <td>
-                    <input type="text" name="max_people" id="max_people" size="15"/>
+                    <input type="text" name="max_people" id="max_people" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Rent type:</th>
                 <td>
-                    <input type="text" name="rent_type" id="rent_type" size="15"/>
+                    <input type="text" name="rent_type" id="rent_type" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Facility free:</th>
                 <td>
-                    <input type="text" name="facility_free" id="facility_free" size="15"/>
+                    <input type="text" name="facility_free" id="facility_free" size="45"/>
                 </td>
             </tr>
             <tr>

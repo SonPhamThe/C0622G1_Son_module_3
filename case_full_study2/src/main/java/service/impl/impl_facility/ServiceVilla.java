@@ -29,4 +29,9 @@ public class ServiceVilla implements IServiceVilla {
     public void remove(String name) {
         villasRepo.remove(name);
     }
+
+    @Override
+    public List<Villa> findByName(String name) {
+        return villasRepo.findByName(name);
+    }
 }

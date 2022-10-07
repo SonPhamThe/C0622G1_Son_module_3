@@ -10,71 +10,115 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>ADD THE VILLA</title>
+    <title>The FURAMA Resort</title>
 </head>
-<div style="text-align: center;">
-    <h1>Form add the villa</h1>
-</div>
 <body>
+<div style="text-align: center;">
+    <h1>Form ADD Villa</h1>
+</div>
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">
-            <caption>
-                <h2>Add New Villa</h2>
-            </caption>
             <tr>
-                <th>Villa Name:</th>
+                <th>Name Villa:</th>
                 <td>
-                    <input type="text" name="name" id="name" size="45"/>
+                    <input type="text" name="name" id="name" size="45" value='${villa.name}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageNameError!=null}">
+                            ${messageNameError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <th>Area Villa:</th>
                 <td>
-                    <input type="text" name="area" id="area" size="45"/>
+                    <input type="text" name="area" id="area" size="45" value='${villa.area}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageEmailError!=null}">
+                            ${messageEmailError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <th>Cost Villa:</th>
                 <td>
-                    <input type="text" name="cost" id="cost" size="15"/>
+                    <input type="text" name="cost" id="cost" size="45" value='${villa.cost}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
-                <th>Max People:</th>
+                <th>Max people:</th>
                 <td>
-                    <input type="text" name="max_people" id="max_people" size="15"/>
+                    <input type="text" name="max_people" id="max_people" size="45" value='${villa.max_people}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <th>Rent type:</th>
                 <td>
-                    <input type="text" name="rent_type" id="rent_type" size="15"/>
+                    <input type="text" name="rent_type" id="rent_type" size="45" value='${villa.cost}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
-                <th>Standard room:</th>
+                <th>Standard Room:</th>
                 <td>
-                    <input type="text" name="standard_room" id="standard_room" size="15"/>
+                    <input type="text" name="standard_room" id="standard_room" size="45"
+                           value='${villa.standard_room}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <th>Description Other Convenience:</th>
                 <td>
-                    <input type="text" name="description_other_convenience" id="description_other_convenience"
-                           size="15"/>
+                    <input type="text" name="description_other_convenience" id="description_other_convenience" size="45"
+                           value='${villa.description_other_convenience}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <th>Pool Area:</th>
                 <td>
-                    <input type="text" name="pool_area" id="pool_area" size="15"/>
+                    <input type="text" name="pool_area" id="pool_area" size="45" value='${villa.pool_area}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <th>Number Of Floors:</th>
                 <td>
-                    <input type="text" name="number_of_floors" id="number_of_floors" size="15"/>
+                    <input type="text" name="number_of_floors" id="number_of_floors" size="45"
+                           value='${villa.number_of_floors}'/>
+                    <p style="text-align: left;color: red">
+                        <c:if test="${messageCountryError!=null}">
+                            ${messageCountryError}
+                        </c:if>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -85,5 +129,12 @@
         </table>
     </form>
 </div>
+<p style="text-align: center">
+    <span style="color:blue">
+        <c:if test="${messageSuccess!=null}">
+            ${messageSuccess}
+        </c:if>
+    </span>
+</p>
 </body>
 </html>

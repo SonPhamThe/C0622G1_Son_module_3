@@ -1,123 +1,159 @@
 DROP DATABASE IF EXISTS case_study;
 CREATE DATABASE case_study;
 USE case_study;
-CREATE TABLE position (
-    id_position INT PRIMARY KEY AUTO_INCREMENT,
-    name_position VARCHAR(45)
+CREATE TABLE `position`(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(45)
 );
 CREATE TABLE education_degree (
-    id_education_degree INT PRIMARY KEY AUTO_INCREMENT,
-    name_education_degree VARCHAR(45)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(45)
 );
 CREATE TABLE division (
-    id_division INT PRIMARY KEY AUTO_INCREMENT,
-    name_division VARCHAR(45)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(45)
+);
+CREATE TABLE `role` (
+role_id INT PRIMARY KEY AUTO_INCREMENT,
+role_name VARCHAR(255)
+);
+CREATE TABLE `user`(
+username VARCHAR(255) PRIMARY KEY ,
+`password` VARCHAR(255)
+);
+CREATE TABLE user_role (
+role_id INT NOT NULL ,
+CONSTRAINT fk_htk_role_id
+FOREIGN KEY (role_id)
+REFERENCES `role`(role_id)
+ON UPDATE CASCADE,
+username VARCHAR(255),
+CONSTRAINT fk_htk_username_role
+FOREIGN KEY (username)
+REFERENCES `user`(username)
+ON UPDATE CASCADE
 );
 CREATE TABLE employee (
-    id_employee INT PRIMARY KEY,
-    name_employee VARCHAR(45),
-    date_of_birth_employee DATE,
-    id_card_employee VARCHAR(45),
-    salary_employee DOUBLE,
-    phone_number_employee VARCHAR(45),
-    email_employee VARCHAR(45),
-    address_employee VARCHAR(45),
-    id_position INT NOT NULL,
-	CONSTRAINT fk_htk_id_position
-	FOREIGN KEY (id_position)
-	REFERENCES `position`(id_position),
-    id_education_degree INT NOT NULL,
-    CONSTRAINT fk_htk_id_education_degree
-	FOREIGN KEY (id_education_degree)
-	REFERENCES education_degree(id_education_degree),
-    id_division INT NOT NULL,
-    CONSTRAINT fk_htk_id_division
-	FOREIGN KEY (id_division)
-	REFERENCES division(id_division)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(45),
+    date_of_birth DATE,
+    id_card VARCHAR(45),
+    salary DOUBLE,
+    phone_number VARCHAR(45),
+    email VARCHAR(45),
+    address VARCHAR(45),
+    position_id INT NOT NULL,
+	CONSTRAINT fk_htk_position_id
+	FOREIGN KEY (id)
+	REFERENCES `position`(id)
+    ON UPDATE CASCADE,
+    education_degree_id INT NOT NULL,
+    CONSTRAINT fk_htk_education_degree_id
+	FOREIGN KEY (education_degree_id)
+	REFERENCES education_degree(id)
+    ON UPDATE CASCADE,
+    division_id INT NOT NULL,
+    CONSTRAINT fk_htk_division_id
+	FOREIGN KEY (division_id)
+	REFERENCES division(id)
+    ON UPDATE CASCADE,
+    username VARCHAR(255),
+    CONSTRAINT fk_htk_username
+    FOREIGN KEY (username)
+    REFERENCES `user`(username)
+    ON UPDATE CASCADE
 );
 CREATE TABLE customer_type(
-	id_customer_type INT PRIMARY KEY AUTO_INCREMENT,
-	name_customer_type VARCHAR(45)
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(45)
 );
 CREATE TABLE facility_type(
-	id_facility_type INT PRIMARY KEY AUTO_INCREMENT,
-	name_facility_type VARCHAR(45)
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(45)
 );
 CREATE TABLE rent_type(
-	id_rent_type INT PRIMARY KEY AUTO_INCREMENT,
-	name_rent_type VARCHAR(45)
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(45)
 );
 CREATE TABLE customer(
-	id_customer INT PRIMARY KEY,
-	name_customer VARCHAR(45),
-	date_of_birth_customer DATE,
-	gender_customer BIT(1),
-	id_card_customer VARCHAR(45),
-	phone_number_customer VARCHAR(45),
-	email_customer VARCHAR(45),
-	address_customer VARCHAR(45),
-	id_customer_type INT NOT NULL,
-    CONSTRAINT fk_htk_id_customer_type
-	FOREIGN KEY (id_customer_type)
-	REFERENCES customer_type(id_customer_type)
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(45),
+	date_of_birth DATE,
+	gender BIT(1),
+	id_card VARCHAR(45),
+	phone_number VARCHAR(45),
+	email VARCHAR(45),
+	address VARCHAR(45),
+    customer_type_id INT NOT NULL,
+    CONSTRAINT fk_htk_customer_type_id
+	FOREIGN KEY (id)
+	REFERENCES customer_type(id)
+    ON UPDATE CASCADE
 );
 
 CREATE TABLE attach_facility(
-	id_attach_facility INT PRIMARY KEY,
-	name_attach_facility VARCHAR(45),
-	cost_attach_facility DOUBLE,
-	unit_attach_facility VARCHAR(10),
-    status_attach_facility VARCHAR(45)
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(45),
+	cost DOUBLE,
+	unit VARCHAR(10),
+    `status` VARCHAR(45)
 );
 
 CREATE TABLE facility(
-	id_facility INT PRIMARY KEY,
-	name_facility VARCHAR(45),
-	area_facility INT,
-    cost_facility DOUBLE,
-	max_people_facility INT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	`name` VARCHAR(45),
+	area INT,
+    cost DOUBLE,
+	max_people INT,
 	standard_room VARCHAR(45),
     description_other_convenience VARCHAR(45),
     pool_area DOUBLE,
     number_of_floors INT,
     facility_free TEXT,
-	id_rent_type INT NOT NULL,
-	CONSTRAINT fk_htk_id_rent_type
-	FOREIGN KEY (id_rent_type)
-	REFERENCES rent_type(id_rent_type),
-	id_facility_type INT NOT NULL,
-	CONSTRAINT fk_htk_id_facility_type
-	FOREIGN KEY (id_facility_type)
-	REFERENCES facility_type(id_facility_type)
+	rent_type_id INT NOT NULL,
+	CONSTRAINT fk_htk_rent_type_id
+	FOREIGN KEY (id)
+	REFERENCES rent_type(id)
+    ON UPDATE CASCADE,
+	facility_type_id INT NOT NULL,
+	CONSTRAINT fk_htk_facility_type_id
+	FOREIGN KEY (id)
+	REFERENCES facility_type(id)
+    ON UPDATE CASCADE
 );
 
 CREATE TABLE contract(
-	id_contract INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	start_date DATETIME,
 	end_date DATETIME,
 	deposit DOUBLE,
-	id_employee INT NOT NULL,
-    CONSTRAINT fk_htk_id_employee
-	FOREIGN KEY (id_employee)
-	REFERENCES employee(id_employee),
-	id_customer INT NOT NULL,
-	CONSTRAINT fk_htk_id_customer 
-	FOREIGN KEY (id_customer )
-	REFERENCES customer(id_customer),
-	id_facility  INT NOT NULL,
-    CONSTRAINT fk_htk_id_facility 
-	FOREIGN KEY (id_facility)
-	REFERENCES facility(id_facility)
+	employee_id INT NOT NULL,
+    CONSTRAINT fk_htk_employee_id
+	FOREIGN KEY (id)
+	REFERENCES employee(id)
+    ON UPDATE CASCADE,
+	customer_id INT NOT NULL,
+	CONSTRAINT fk_htk_customer_id 
+	FOREIGN KEY (id)
+	REFERENCES customer(id)
+    ON UPDATE CASCADE,
+	facility_id INT NOT NULL,
+    CONSTRAINT fk_htk_facility_id 
+	FOREIGN KEY (id)
+	REFERENCES facility(id)
+    ON UPDATE CASCADE
 );
 CREATE TABLE contract_detail(
-	id_contract_detail INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     quantity INT,
-	id_contract INT NOT NULL,
-    CONSTRAINT fk_htk_id_contract
-	FOREIGN KEY (id_contract)
-	REFERENCES contract(id_contract),
-	id_attach_facility INT NOT NULL,
-    CONSTRAINT fk_htk_id_attach_facility
-	FOREIGN KEY (id_attach_facility)
-	REFERENCES attach_facility(id_attach_facility)
+	contract_id INT NOT NULL,
+    CONSTRAINT fk_htk_contract_id
+	FOREIGN KEY (id)
+	REFERENCES contract(id)
+    ON UPDATE CASCADE,
+	attach_facility_id INT NOT NULL,
+    CONSTRAINT fk_htk_attach_facility_id 
+	FOREIGN KEY (id )
+	REFERENCES attach_facility(id )
+    ON UPDATE CASCADE
 );

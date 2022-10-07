@@ -19,6 +19,7 @@ body {
 }
 
 .wrapper {
+    margin-left: 30px;
     width: 1160px;
 }
 
@@ -125,7 +126,7 @@ span {
 }
 
 .footer {
-    background-color:#e1e1e1;
+    background-color: #e1e1e1;
     color: #707070;
     height: 300px;
     padding: 45px 15px 25px;
@@ -179,6 +180,7 @@ span {
     font-weight: 600;
     color: #af936c;
 }
+
 .main-about__buttons {
     gap: 0 10px;
 }
@@ -210,7 +212,7 @@ span {
 }
 
 .festival {
-    background-image: url(data:images/festival.jpeg);
+    background-image: url("../images/festival.jpeg");
     display: flex;
     clear: both;
     align-items: center;
@@ -242,4 +244,8 @@ span {
 .footer__brand-logo {
     height: 26px;
     width: auto;
+}
+
+.tbody tr {
+    text-align: center;
 }

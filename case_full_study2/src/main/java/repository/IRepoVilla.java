@@ -13,4 +13,6 @@ public interface IRepoVilla {
     void update(Villa villa);
 
     void remove(String name);
+
+   List<Villa> findByName(String name);
 }

@@ -2,7 +2,8 @@ package model.facility;
 
 import java.util.Date;
 
-public class Facility {
+public abstract class Facility {
+    private int id;
     private String name;
     private double area;
     private double cost;

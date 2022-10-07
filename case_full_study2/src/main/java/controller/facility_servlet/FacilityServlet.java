@@ -55,7 +55,7 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void movePageService(HttpServletRequest req, HttpServletResponse resp) {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("view/facility/page_service.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("view/page_service.jsp");
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException | IOException e) {
@@ -67,7 +67,7 @@ public class FacilityServlet extends HttpServlet {
         List<Facility> facilities = this.facilityService.displayAll();
         req.setAttribute("facilities", facilities);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("view/facility/page.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("view/page.jsp");
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException | IOException e) {

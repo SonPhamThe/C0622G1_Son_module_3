@@ -12,4 +12,6 @@ public interface IServiceVilla {
     void update(Villa villa);
 
     void remove(String name);
+
+    List<Villa> findByName(String name);
 }
