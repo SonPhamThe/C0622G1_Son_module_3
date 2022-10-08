@@ -15,5 +15,7 @@ public interface IRepoEmployee {
 
     Employee findEmployee(int id);
 
-    List<Employee> findOptionEmployee();
+    List<Employee> findOneOptionEmployee(String searchName);
+
+    List<Employee> findTwoOptionEmployee(String searchName, int divisionId);
 }

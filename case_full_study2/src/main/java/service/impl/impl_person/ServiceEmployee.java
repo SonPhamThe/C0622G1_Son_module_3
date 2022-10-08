@@ -35,4 +35,14 @@ public class ServiceEmployee implements IServiceEmployee {
     public Employee findEmployee(int id) {
         return employeeRepo.findEmployee(id);
     }
+
+    @Override
+    public List<Employee> findOneOptionEmployee(String searchName) {
+        return employeeRepo.findOneOptionEmployee(searchName);
+    }
+
+    @Override
+    public List<Employee> findTwoOptionEmployee(String searchName, int divisionId) {
+        return employeeRepo.findTwoOptionEmployee(searchName, divisionId);
+    }
 }

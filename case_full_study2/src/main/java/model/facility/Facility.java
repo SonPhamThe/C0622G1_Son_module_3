@@ -1,14 +1,12 @@
 package model.facility;
 
-import java.util.Date;
-
 public abstract class Facility {
     private int id;
     private String name;
     private double area;
     private double cost;
-    private int max_people;
-    private String rent_type;
+    private int maxPeople;
+    private String rentType;
 
     public Facility() {
     }
@@ -17,8 +15,8 @@ public abstract class Facility {
         this.name = name;
         this.area = area;
         this.cost = cost;
-        this.max_people = max_people;
-        this.rent_type = rent_type;
+        this.maxPeople = max_people;
+        this.rentType = rent_type;
     }
 
     public String getName() {
@@ -45,19 +43,19 @@ public abstract class Facility {
         this.cost = cost;
     }
 
-    public int getMax_people() {
-        return max_people;
+    public int getMaxPeople() {
+        return maxPeople;
     }
 
-    public void setMax_people(int max_people) {
-        this.max_people = max_people;
+    public void setMaxPeople(int maxPeople) {
+        this.maxPeople = maxPeople;
     }
 
-    public String getRent_type() {
-        return rent_type;
+    public String getRentType() {
+        return rentType;
     }
 
-    public void setRent_type(String rent_type) {
-        this.rent_type = rent_type;
+    public void setRentType(String rentType) {
+        this.rentType = rentType;
     }
 }

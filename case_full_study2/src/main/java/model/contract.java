@@ -1,25 +1,23 @@
 package model;
 
-import jdk.nashorn.internal.ir.SplitReturn;
-
 import java.util.Date;
 
 public class contract {
     private String id;
-    private Date start_date;
-    private Date end_date;
+    private Date startDate;
+    private Date endDate;
     private double deposit;
-    private double total_money;
+    private double totalMoney;
 
     public contract() {
     }
 
     public contract(String id, Date start_date, Date end_date, double deposit, double total_money) {
         this.id = id;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.startDate = start_date;
+        this.endDate = end_date;
         this.deposit = deposit;
-        this.total_money = total_money;
+        this.totalMoney = total_money;
     }
 
     public String getId() {
@@ -30,20 +28,20 @@ public class contract {
         this.id = id;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public double getDeposit() {
@@ -54,11 +52,11 @@ public class contract {
         this.deposit = deposit;
     }
 
-    public double getTotal_money() {
-        return total_money;
+    public double getTotalMoney() {
+        return totalMoney;
     }
 
-    public void setTotal_money(double total_money) {
-        this.total_money = total_money;
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 }

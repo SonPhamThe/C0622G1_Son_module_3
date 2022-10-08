@@ -14,4 +14,8 @@ public interface IServiceEmployee {
     boolean remove(int id);
 
     Employee findEmployee(int id);
+
+    List<Employee> findOneOptionEmployee(String searchName);
+
+    List<Employee> findTwoOptionEmployee(String searchName, int divisionId);
 }

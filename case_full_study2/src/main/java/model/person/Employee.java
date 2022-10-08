@@ -1,65 +1,49 @@
 package model.person;
 
-import java.util.Date;
-
 public class Employee {
     private int id;
     private String name;
-    private String date_of_birth;
-    private String id_card;
+    private String dateOfBirth;
+    private String idCard;
     private Double salary;
-    private String phone_number;
+    private String phoneNumber;
     private String email;
     private String address;
-    private int education_degree_id;
-    private int position_id;
-    private int division_id;
+    private int educationDegreeId;
+    private int positionId;
+    private int divisionId;
     private String username;
 
     public Employee() {
     }
 
-    public Employee(String name, String date_of_birth, String id_card, Double salary, String phone_number, String email, String address, int education_degree_id, int position_id, int division_id, String username) {
+    public Employee(int id, String name, String dateOfBirth, String idCard, Double salary, String phoneNumber, String email, String address, int educationDegreeId, int positionId, int divisionId, String username) {
+        this.id = id;
         this.name = name;
-        this.date_of_birth = date_of_birth;
-        this.id_card = id_card;
+        this.dateOfBirth = dateOfBirth;
+        this.idCard = idCard;
         this.salary = salary;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
-        this.education_degree_id = education_degree_id;
-        this.position_id = position_id;
-        this.division_id = division_id;
+        this.educationDegreeId = educationDegreeId;
+        this.positionId = positionId;
+        this.divisionId = divisionId;
         this.username = username;
     }
 
-    public Employee(int id, String name, String date_of_birth, String id_card, Double salary, String phone_number, String email, String address, int education_degree_id, int position_id, int division_id, String username) {
-        this.id = id;
+    public Employee(String name, String dateOfBirth, String idCard, Double salary, String phoneNumber, String email, String address, int educationDegreeId, int positionId, int divisionId, String username) {
         this.name = name;
-        this.date_of_birth = date_of_birth;
-        this.id_card = id_card;
+        this.dateOfBirth = dateOfBirth;
+        this.idCard = idCard;
         this.salary = salary;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
-        this.education_degree_id = education_degree_id;
-        this.position_id = position_id;
-        this.division_id = division_id;
+        this.educationDegreeId = educationDegreeId;
+        this.positionId = positionId;
+        this.divisionId = divisionId;
         this.username = username;
-    }
-
-    public Employee(int id, String name, String date_of_birth, String id_card, Double salary, String phone_number, String email, String address, int education_degree_id, int position_id, int division_id) {
-        this.id = id;
-        this.name = name;
-        this.date_of_birth = date_of_birth;
-        this.id_card = id_card;
-        this.salary = salary;
-        this.phone_number = phone_number;
-        this.email = email;
-        this.address = address;
-        this.education_degree_id = education_degree_id;
-        this.position_id = position_id;
-        this.division_id = division_id;
     }
 
     public int getId() {
@@ -78,20 +62,20 @@ public class Employee {
         this.name = name;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getId_card() {
-        return id_card;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setId_card(String id_card) {
-        this.id_card = id_card;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     public Double getSalary() {
@@ -102,12 +86,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -126,28 +110,28 @@ public class Employee {
         this.address = address;
     }
 
-    public int getEducation_degree_id() {
-        return education_degree_id;
+    public int getEducationDegreeId() {
+        return educationDegreeId;
     }
 
-    public void setEducation_degree_id(int education_degree_id) {
-        this.education_degree_id = education_degree_id;
+    public void setEducationDegreeId(int educationDegreeId) {
+        this.educationDegreeId = educationDegreeId;
     }
 
-    public int getPosition_id() {
-        return position_id;
+    public int getPositionId() {
+        return positionId;
     }
 
-    public void setPosition_id(int position_id) {
-        this.position_id = position_id;
+    public void setPositionId(int positionId) {
+        this.positionId = positionId;
     }
 
-    public int getDivision_id() {
-        return division_id;
+    public int getDivisionId() {
+        return divisionId;
     }
 
-    public void setDivision_id(int division_id) {
-        this.division_id = division_id;
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
     }
 
     public String getUsername() {

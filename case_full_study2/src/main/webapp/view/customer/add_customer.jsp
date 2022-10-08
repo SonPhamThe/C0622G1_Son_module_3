@@ -35,13 +35,14 @@
                 <th>Name Customer:</th>
                 <td>
                     <input type="text" name="name" id="name" size="45"
-                           value='${customer.name}'/>
-                    <p style="text-align: left;color: red">
-                        <c:if test="${messageEmailError!=null}">
-                            ${messageEmailError}
-                        </c:if>
-                    </p>
+                           value="${customer.name}"/>
+                    <%--                    <p style="text-align: left;color: red">--%>
+                    <%--                        <c:if test="${messageEmailError!=null}">--%>
+                    <%--                            ${messageEmailError}--%>
+                    <%--                        </c:if>--%>
+                    <%--                    </p>--%>
                 </td>
+                <%--                pattern="([A-Z]{1}[^\d]+\s)+"--%>
             </tr>
             <tr>
                 <th>Date Of Birth Customer:</th>

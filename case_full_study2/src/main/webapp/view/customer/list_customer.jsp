@@ -45,8 +45,10 @@
         <tbody class="tbody">
         <c:forEach var="customer" items="${listCustomer}">
             <tr>
+<%--  int id, int customer_type_id, String name, String date_of_birth, String gender, String id_card,
+String phone_number, String email, String address--%>
                 <td style="text-align: center"><c:out value="${customer.id}"/></td>
-                <td style="text-align: center"><c:out value="${customer.customer_type_id}"/></td>
+                <td style="text-align: center"><c:out value="${customer.customerTypeId}"/></td>
                 <td style="text-align: center"><c:out value="${customer.name}"/></td>
                 <td style="text-align: center"><c:out value="${customer.date_of_birth}"/></td>
                 <td style="text-align: center"><c:out value="${customer.gender}"/></td>

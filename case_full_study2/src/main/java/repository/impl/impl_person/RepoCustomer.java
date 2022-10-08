@@ -1,7 +1,6 @@
 package repository.impl.impl_person;
 
 import model.person.Customer;
-import model.person.Employee;
 import repository.DataBaseRepository;
 import repository.IRepoCustomer;
 
@@ -32,16 +31,16 @@ public class RepoCustomer implements IRepoCustomer {
             ResultSet result = prepared.executeQuery();
             while (result.next()) {
                 int id = result.getInt("id");
-                int customer_type_id = result.getInt("customer_type_id");
+                int customerTypeId = result.getInt("customerTypeId");
                 String name = result.getString("name");
-                String date_of_birth = result.getString("date_of_birth");
+                String dateOfBirth = result.getString("dateOfBirth");
                 String gender = result.getString("gender");
-                String id_card = result.getString("id_card");
-                String phone_number = result.getString("phone_number");
+                String idCard = result.getString("idCard");
+                String phoneNumber = result.getString("phoneNumber");
                 String email = result.getString("email");
                 String address = result.getString("address");
 
-                customers.add(new Customer(id, customer_type_id, name, date_of_birth, gender, id_card, phone_number, email, address));
+                customers.add(new Customer(id, customerTypeId, name, dateOfBirth, gender, idCard, phoneNumber, email, address));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -54,12 +53,12 @@ public class RepoCustomer implements IRepoCustomer {
         Connection connection = DataBaseRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(ADD_CUSTOMER);
-            preparedStatement.setString(1, customer.getName());
-            preparedStatement.setString(2, String.valueOf(customer.getCustomer_type_id()));
-            preparedStatement.setString(3, customer.getDate_of_birth());
-            preparedStatement.setString(4, customer.getId_card());
-            preparedStatement.setString(5, customer.getGender());
-            preparedStatement.setString(6, customer.getPhone_number());
+            preparedStatement.setString(1, String.valueOf(customer.getCustomerTypeId()));
+            preparedStatement.setString(2, customer.getName());
+            preparedStatement.setString(3, customer.getDateOfBirth());
+            preparedStatement.setString(4, customer.getIdCard());
+            preparedStatement.setInt(5, 1);
+            preparedStatement.setString(6, customer.getPhoneNumber());
             preparedStatement.setString(7, customer.getEmail());
             preparedStatement.setString(8, customer.getAddress());
             preparedStatement.executeUpdate();
@@ -73,12 +72,12 @@ public class RepoCustomer implements IRepoCustomer {
         boolean rowUpdate = false;
 
         try (Connection connection = DataBaseRepository.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER)) {
-            preparedStatement.setString(1, String.valueOf(customer.getCustomer_type_id()));
+            preparedStatement.setString(1, String.valueOf(customer.getCustomerTypeId()));
             preparedStatement.setString(2, customer.getName());
-            preparedStatement.setString(3, customer.getDate_of_birth());
+            preparedStatement.setString(3, customer.getDateOfBirth());
             preparedStatement.setString(4, customer.getGender());
-            preparedStatement.setString(5, customer.getId_card());
-            preparedStatement.setString(6, customer.getPhone_number());
+            preparedStatement.setString(5, customer.getIdCard());
+            preparedStatement.setString(6, customer.getPhoneNumber());
             preparedStatement.setString(7, customer.getEmail());
             preparedStatement.setString(8, customer.getAddress());
             preparedStatement.setInt(9, customer.getId());
@@ -113,16 +112,16 @@ public class RepoCustomer implements IRepoCustomer {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int customer_type_id = rs.getInt("customer_type_id");
+                int customerTypeId = rs.getInt("customerTypeId");
                 String name = rs.getString("name");
-                String date_of_birth = rs.getString("date_of_birth");
+                String dateOfBirth = rs.getString("dateOfBirth");
                 String gender = rs.getString("gender");
-                String id_card = rs.getString("id_card");
-                String phone_number = rs.getString("phone_number");
+                String idCard = rs.getString("idCard");
+                String phoneNumber = rs.getString("phoneNumber");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
 
-                customer = new Customer(id, customer_type_id, name, date_of_birth, gender, id_card, phone_number, email, address);
+                customer = new Customer(id, customerTypeId, name, dateOfBirth, gender, idCard, phoneNumber, email, address);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

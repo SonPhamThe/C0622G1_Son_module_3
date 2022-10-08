@@ -40,16 +40,16 @@ public class CustomerServlet extends HttpServlet {
 
     private void editCustomer(HttpServletRequest req, HttpServletResponse resp) {
         int id = Integer.parseInt(req.getParameter("id"));
-        int customer_type_id = Integer.parseInt(req.getParameter("customer_type_id"));
+        int customerTypeId = Integer.parseInt(req.getParameter("customerTypeId"));
         String name = req.getParameter("name");
-        String date_of_birth = req.getParameter("date_of_birth");
+        String dateOfBirth = req.getParameter("dateOfBirth");
         String gender = req.getParameter("gender");
-        String id_card = req.getParameter("id_card");
-        String phone_number = req.getParameter("phone_number");
+        String idCard = req.getParameter("idCard");
+        String phoneNumber = req.getParameter("phoneNumber");
         String email = req.getParameter("email");
         String address = req.getParameter("address");
 
-        Customer newCustomer = new Customer(id, customer_type_id, name, date_of_birth, gender, id_card, phone_number, email, address);
+        Customer newCustomer = new Customer(id, customerTypeId, name, dateOfBirth, gender, idCard, phoneNumber, email, address);
         customerService.update(newCustomer);
         try {
             req.getRequestDispatcher("/view/customer/edit_customer.jsp").forward(req, resp);
@@ -59,16 +59,16 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void addCustomer(HttpServletRequest req, HttpServletResponse resp) {
-        int customer_type_id = Integer.parseInt(req.getParameter("customer_type_id"));
+        int customerTypeId = Integer.parseInt(req.getParameter("customerTypeId"));
         String name = req.getParameter("name");
-        String date_of_birth = req.getParameter("date_of_birth");
+        String dateOfBirth = req.getParameter("dateOfBirth");
         String gender = req.getParameter("gender");
-        String id_card = req.getParameter("id_card");
-        String phone_number = req.getParameter("phone_number");
+        String idCard = req.getParameter("idCard");
+        String phoneNumber = req.getParameter("phoneNumber");
         String email = req.getParameter("email");
         String address = req.getParameter("address");
 
-        customerService.add(new Customer(customer_type_id, name, date_of_birth, gender, id_card, phone_number, email, address));
+        customerService.add(new Customer(customerTypeId, name, dateOfBirth, gender, idCard, phoneNumber, email, address));
 
         try {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/view/customer/add_customer.jsp");

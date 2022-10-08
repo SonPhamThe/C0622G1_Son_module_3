@@ -1,40 +1,38 @@
 package model.person;
 
-import java.util.Date;
-
 public class Customer{
     private int id;
-    private int customer_type_id;
+    private int customerTypeId;
     private String name;
-    private String date_of_birth;
+    private String dateOfBirth;
     private String gender;
-    private String id_card;
-    private String phone_number;
+    private String idCard;
+    private String phoneNumber;
     private String email;
     private String address;
 
     public Customer() {
     }
 
-    public Customer(int customer_type_id, String name, String date_of_birth, String gender, String id_card, String phone_number, String email, String address) {
-        this.customer_type_id = customer_type_id;
+    public Customer(int id, int customerTypeId, String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String address) {
+        this.id = id;
+        this.customerTypeId = customerTypeId;
         this.name = name;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.id_card = id_card;
-        this.phone_number = phone_number;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
     }
 
-    public Customer(int id, int customer_type_id, String name, String date_of_birth, String gender, String id_card, String phone_number, String email, String address) {
-        this.id = id;
-        this.customer_type_id = customer_type_id;
+    public Customer(int customerTypeId, String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String address) {
+        this.customerTypeId = customerTypeId;
         this.name = name;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.id_card = id_card;
-        this.phone_number = phone_number;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
     }
@@ -47,12 +45,12 @@ public class Customer{
         this.id = id;
     }
 
-    public int getCustomer_type_id() {
-        return customer_type_id;
+    public int getCustomerTypeId() {
+        return customerTypeId;
     }
 
-    public void setCustomer_type_id(int customer_type_id) {
-        this.customer_type_id = customer_type_id;
+    public void setCustomerTypeId(int customerTypeId) {
+        this.customerTypeId = customerTypeId;
     }
 
     public String getName() {
@@ -63,12 +61,12 @@ public class Customer{
         this.name = name;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGender() {
@@ -79,20 +77,20 @@ public class Customer{
         this.gender = gender;
     }
 
-    public String getId_card() {
-        return id_card;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setId_card(String id_card) {
-        this.id_card = id_card;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {

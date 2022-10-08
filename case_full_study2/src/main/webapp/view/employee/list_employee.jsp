@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="../../datatables/css/dataTables.bootstrap5.min.css"/>
 </head>
 <body>
+<h1 style="margin-top: 80px; text-align: center">Page Employee</h1>
+<a href="/employees?action=addEmployee"><img id="logo" src="../images/logo_add.png" height="130px" width="150px"/>Click
+    here to move Form Add Employee</a>
 <div style="text-align: center;">
-    <h1>List the Employee</h1>
     <div>
-        <form class="d-flex m-0 p-0 align-items-center justify-content-end" style="flex: 1" action="/employees?action=findEmployee" method="post">
+        <form class="d-flex m-0 p-0 align-items-center justify-content-end" style="flex: 1"
+              action="/employees?action=findEmployee" method="post">
             <input type="search" placeholder="Tìm theo tên" aria-label="Search" name="name">
             <span class="mx-3">Giá</span>
             <input type="number" aria-label="Search" name="cost" value="100000000">
@@ -32,101 +35,106 @@
         </form>
     </div>
 </div>
-<div align="center">
-    <table id="tableEmployee" class="table table-striped table-bordered" style="width:100%" border="1">
-        <thead>
+
+<table class="table table-secondary table-hover" id="tableEmployee" style="width: 100%">
+    <thead>
+    <tr class="table-active">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birth Day</th>
+        <th>ID Card</th>
+        <th>SALARY</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>education_degree_id</th>
+        <th>Position</th>
+        <th>division_id</th>
+        <th>username</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${listEmployee}" var="employee">
         <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>DATE OF BIRTH</th>
-            <th>ID CARD</th>
-            <th>SALARY</th>
-            <th>PHONE NUMBER</th>
-            <th>EMAIL</th>
-            <th>ADDRESS</th>
-            <th>EDUCATION DEGREE ID</th>
-            <th>POSITION ID</th>
-            <th>DIVISION ID</th>
-            <th>USERNAME</th>
-            <th>Action</th>
-            <th>Action</th>
+<%-- int id, String name, String dateOfBirth, String idCard, Double salary, String phoneNumber,
+String email, String address, int educationDegreeId, int positionId, int divisionId, String username--%>
+            <td>${employee.id}</td>
+            <td>${employee.name}</td>
+            <th>${employee.dateOfBirth}</th>
+            <th>${employee.idCard}</th>
+            <th>${employee.salary}</th>
+            <th>${employee.phoneNumber}</th>
+            <td>${employee.email}</td>
+            <td>${employee.address}</td>
+            <td>${employee.educationDegreeId}</td>
+            <td>${employee.positionId} </td>
+            <td>${employee.divisionId} </td>
+            <td>${employee.username} </td>
+            <td>
+                    <%--                    <!-- Button trigger modal EDIT -->--%>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1${employee.id}">
+                    Chỉnh Sửa
+                </button>
+
+                    <%--                    <!-- Modal -->--%>
+                <div class="modal fade" id="exampleModal1${employee.id}" tabindex="-1"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel1" style="color: #000">Thay đổi thông
+                                    tin</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="color: #000">
+                                Bạn có muốn thay đổi thông tin <strong class="text-danger">${employee.name}</strong>
+                                không ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                </button>
+                                <a href="/employees?action=editEmployee&id=${employee.id}" class="btn btn-secondary">Thay
+                                    Đổi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <!-- Button trigger modal DELETE -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#sp${employee.id}">
+                    Delete
+                </button>
+                <!-- Modal -->
+                <div class="modal fade " id="sp${employee.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog ">
+                        <div class="modal-content bg-light">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ARE YOU SURE DELETE <strong class="text-danger">${employee.name}</strong> ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="/employees?action=deleteEmployee&id=${employee.id}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
-        </thead>
-        <tbody class="tbody">
-        <c:forEach var="employee" items="${listEmployee}">
-            <tr>
-                <td style="text-align: center"><c:out value="${employee.id}"/></td>
-                <td style="text-align: center"><c:out value="${employee.name}"/></td>
-                <td style="text-align: center"><c:out value="${employee.date_of_birth}"/></td>
-                <td style="text-align: center"><c:out value="${employee.id_card}"/></td>
-                <td style="text-align: center"><c:out value="${employee.salary}"/></td>
-                <td style="text-align: center"><c:out value="${employee.phone_number}"/></td>
-                <td style="text-align: center"><c:out value="${employee.email}"/></td>
-                <td style="text-align: center"><c:out value="${employee.address}"/></td>
-                <td style="text-align: center"><c:out value="${employee.education_degree_id}"/></td>
-                <td style="text-align: center"><c:out value="${employee.position_id}"/></td>
-                <td style="text-align: center"><c:out value="${employee.division_id}"/></td>
-                <td style="text-align: center"><c:out value="${employee.username}"/></td>
-                <td>
-                        <%--                    <!-- Button trigger modal EDIT -->--%>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal1${employee.id}">
-                        Chỉnh Sửa
-                    </button>
-
-                        <%--                    <!-- Modal -->--%>
-                    <div class="modal fade" id="exampleModal1${employee.id}" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel1" style="color: #000">Thay đổi thông
-                                        tin</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" style="color: #000">
-                                    Bạn có muốn thay đổi thông tin <strong class="text-danger">${employee.name}</strong>
-                                    không ?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <a href="/employees?action=editEmployee&id=${employee.id}" class="btn btn-secondary">Thay Đổi</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-
-                <td>
-                    <!-- Button trigger modal DELETE -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#sp${employee.id}">
-                        Delete
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade " id="sp${employee.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog ">
-                            <div class="modal-content bg-dark">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                     <strong class="text-danger">ARE YOU SURE DELETE ${employee.name} ?</strong>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a href="/employees?action=deleteEmployee&id=${employee.id}" class="btn btn-danger">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    </c:forEach>
+    </tbody>
+</table>
 </div>
 <section class="footer d-flex justify-content-center mt-5">
     <div class="wrapper container">
@@ -174,9 +182,15 @@
         </div>
     </div>
 </section>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
