@@ -24,16 +24,32 @@
 </form>
 <div style="text-align: center;">
     <div>
-        <form  class="d-flex m-0 p-0 align-items-center justify-content-end" style="flex: 1"
-              action="/houses?action=searchHouseHold" method="post">
-            <input type="search" placeholder="Tìm theo tên" aria-label="Search" name="searchName">
+<%--        <form action="/employee">--%>
+<%--            <input type="hidden" name="action" value="search">--%>
+<%--            <input type="text" name="searchName" placeholder="...search name">--%>
+<%--            <input type="text" name="searchEmail" placeholder="...search Email">--%>
+<%--            <select name="divisionType" >--%>
+<%--                <option value="" selected hidden>Type</option>--%>
+<%--                <c:forEach var="mapDivision" items="${mapDivision}">--%>
+<%--                    <option value="${mapDivision.value}">${mapDivision.value}</option>--%>
+<%--                </c:forEach>--%>
+<%--            </select>--%>
+<%--            <input class="btn btn-primary" type="submit" value="Search">--%>
+<%--        </form>--%>
+    <form style="flex: 1;" action="/houses?action=search"
+          class="d-flex justify-content-end m-0 p-0 align-items-center" method="post">
+        <input class="form-control w-auto mx-2" type="text" placeholder="Search by Name..." name="searchName">
+        <input class="form-control w-auto mx-2" type="text" placeholder="Search by Date..."
+               name="searchDate">
+        <input class="form-control w-auto mx-2" type="text" placeholder="Search by Address..."
+               name="searchAddress">
+        <input class="btn btn-outline-success mx-2" type="submit" style="color: white" value="Search"
+               style="margin-right: 0!important;">
+    </form>
 
-            <span class="mx-3">Ngày thuê</span>
-            <input type="date" aria-label="Search" name="searchDate">
-
-            <span class="mx-3">Địa chỉ</span>
-            <input type="text" aria-label="Search" name="searchAddress">
-<%--            <select name="serviceType" class="mx-3">--%>
+    style="flex: 1;" action="/houses?action=search"
+    class="d-flex justify-content-end m-0 p-0 align-items-center"
+<%--&lt;%&ndash;            <select name="serviceType" class="mx-3">&ndash;%&gt;--%>
 <%--                <option value="0">Tất cả dịch vụ</option>--%>
 <%--                <option value="1">Villa</option>--%>
 <%--                <option value="2">House</option>--%>
@@ -46,8 +62,6 @@
             <%--                        <option value="${position.key}">${position.value}</option>--%>
             <%--                    </c:forEach>--%>
             <%--                </select>--%>
-            <input type="submit" value="Tìm kiếm" class="btn btn-outline-success">
-        </form>
     </div>
 </div>
 

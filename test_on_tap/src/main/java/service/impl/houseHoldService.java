@@ -100,11 +100,11 @@ public class houseHoldService implements IServiceHouseHold {
 
     @Override
     public List<houseHold> searchHouseHoldTwo(String searchName, String searchDate) {
-        return houseHoldService.repoHouseHold.searchHouseHoldTwo(searchName, searchDate);
+        return null;
     }
 
     @Override
     public List<houseHold> searchHouseHoldOne(String searchName) {
-        return houseHoldService.repoHouseHold.searchHouseHoldOne(searchName);
+        return null;
     }
 }

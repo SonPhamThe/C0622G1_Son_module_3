@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "houseHoldServlet", urlPatterns = "/houses")
+@WebServlet(name = "houseHoldServlet", value = "/houses")
 public class houseHoldServlet extends HttpServlet {
     private static final IServiceHouseHold houseHoldService = new houseHoldService();
 
@@ -35,6 +35,9 @@ public class houseHoldServlet extends HttpServlet {
                 break;
             case "searchHouseHold":
                 searchHouseHold(req, resp);
+                break;
+            case "search":
+                searchEmployee(req,resp);
                 break;
         }
     }
@@ -94,6 +97,36 @@ public class houseHoldServlet extends HttpServlet {
                 }
                 break;
         }
+    }
+// cách của anh QUang tìm kiếm 3 trường
+    private void searchEmployee(HttpServletRequest req, HttpServletResponse resp) {
+        String tentIdSearch = (req.getParameter("searchName"));
+        String tenantNameSearch = req.getParameter("searchDate");
+        String phoneNumberSearch = req.getParameter("searchAddress");
+
+
+        List<houseHold> foundHouseHold = houseHoldService.searchHouseHold(tentIdSearch,tenantNameSearch,phoneNumberSearch);
+        req.setAttribute("listHouseHold", foundHouseHold);
+
+        try {
+            req.getRequestDispatcher("view/house_hold/list.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+//        String name = request.getParameter("searchName");
+//        String email= request.getParameter("searchEmail");
+//        String divisionType = request.getParameter("divisionType");
+//        List<Employee> employeeList = iEmployeeService.searchEmployee(name,email,divisionType);
+//        Map<Integer,String> mapDivision = iEmployeeService.findDivision();
+//        request.setAttribute("employeeList",employeeList);
+//        request.setAttribute("mapDivision",mapDivision);
+//        try {
+//            request.getRequestDispatcher("view/employee/list.jsp").forward(request,response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void showEdit(HttpServletRequest req, HttpServletResponse resp) {

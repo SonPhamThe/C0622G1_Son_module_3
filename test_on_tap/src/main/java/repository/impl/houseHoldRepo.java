@@ -28,13 +28,18 @@ public class houseHoldRepo implements IRepoHouseHold {
 
     private static final String SEARCH_NAME = "SELECT * FROM hienthihokhau where is_delete=0 and ten_chu_ho like ?;";
 
-    private static final String SEARCH_TWO= "SELECT * FROM hienthihokhau where is_delete=0 and ten_chu_ho like ? AND ngay_lap_ho_khau LIKE ?;";
+    private static final String SEARCH_TWO = "SELECT * FROM hienthihokhau where is_delete=0 and ten_chu_ho like ? AND ngay_lap_ho_khau LIKE ?;";
 
     private static final String SEARCH_EMPLOYEE = "SELECT employee.* FROM employee\n" +
             "JOIN division ON employee.division_id = division.id\n" +
             "WHERE status=1 AND employee.name like ? AND employee.email like ? AND division.name like ?;";
     private static final String SELECT_ALL_DIVISION = "SELECT  * FROM division;";
 
+    private static final String SEARCH_HOUSE = "SELECT * from hienthihokhau \n" +
+            "            where \n" +
+            "            ten_chu_ho like ? AND\n" +
+            "            ngay_lap_ho_khau like ? AND\n" +
+            "            dia_chi LIKE ?;";
 
     @Override
     public List<houseHold> displayAll() {
@@ -116,84 +121,70 @@ public class houseHoldRepo implements IRepoHouseHold {
             }
             listMap.put(item, memberList);
         }
-       return listMap;
+        return listMap;
     }
 
+
+    //    cách của anh Quang
     @Override
     public List<houseHold> searchHouseHold(String searchName, String searchDate, String searchAddress) {
-        List<houseHold> houseHoldList = new ArrayList<>();
         Connection connection = DataBaseRepository.getConnection();
+        List<houseHold> housegHolds = new ArrayList<>();
+
+
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_EMPLOYEE);
-            preparedStatement.setString(1, "%" + name + "%");
-            preparedStatement.setString(2, "%" + email + "%");
-            preparedStatement.setString(3, "%" + divisionType + "%");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int employeeId = resultSet.getInt("id");
-                String employeeName = resultSet.getString("name");
-                String employeeBirthday = resultSet.getString("date_of_birth");
-                String employeeIdCard = resultSet.getString("id_card");
-                double employeeSalary = resultSet.getInt("salary");
-                String employeePhone = resultSet.getString("phone_number");
-                String employeeEmail = resultSet.getString("email");
-                String employeeAddress = resultSet.getString("address");
-                int positionId = resultSet.getInt("position_id");
-                int educationDegreeId = resultSet.getInt("education_degree_id");
-                int divisionId = resultSet.getInt("division_id");
+            PreparedStatement ps = connection.prepareStatement(SEARCH_HOUSE);
 
-                employeeList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
-                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId));
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return employeeList;
-    }
+            ps.setString(1, "%" + searchName + "%");
+            ps.setString(2, "%" + searchDate + "%");
+            ps.setString(3, "%" + searchAddress + "%");
 
-    @Override
-    public List<houseHold> searchHouseHoldTwo(String searchName, String searchDate) {
-        List<houseHold> houseHolds = new ArrayList<>();
-        try (Connection connection = DataBaseRepository.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_TWO);) {
-            preparedStatement.setString(1, "%"+searchName+"%");
-            preparedStatement.setString(2,"%"+searchDate+"%");
+            ResultSet rs = ps.executeQuery();
 
-            ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ma_ho-khau");
+                int id = rs.getInt("ma_ho_khau");
                 String name = rs.getString("ten_chu_ho");
                 String startDate = rs.getString("ngay_lap_ho_khau");
                 String address = rs.getString("dia_chi");
                 int so_luong = rs.getInt("so_luong_thanh_vien");
-                houseHolds.add(new houseHold(id, name, startDate, address, so_luong));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return houseHolds;
-    }
 
-    @Override
-    public List<houseHold> searchHouseHoldOne(String searchName) {
-        List<houseHold> houseHolds = new ArrayList<>();
-        try (Connection connection = DataBaseRepository.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_NAME);) {
-            preparedStatement.setString(1, "%"+searchName+"%");
-
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("ma_ho-khau");
-                String name = rs.getString("ten_chu_ho");
-                String startDate = rs.getString("ngay_lap_ho_khau");
-                String address = rs.getString("dia_chi");
-                int so_luong = rs.getInt("so_luong_thanh_vien");
-                houseHolds.add(new houseHold(id, name, startDate, address, so_luong));
+                housegHolds.add(new houseHold(id, name, startDate, address, so_luong));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        } catch (SQLException throwAbles) {
+            throwAbles.printStackTrace();
         }
-        return houseHolds;
+
+
+        return housegHolds;
+//        List<Employee> employeeList = new ArrayList<>();
+//        Connection connection = BaseRepository.getConnectDB();
+//        try {
+//            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_EMPLOYEE);
+//            preparedStatement.setString(1, "%" + name + "%");
+//            preparedStatement.setString(2, "%" + email + "%");
+//            preparedStatement.setString(3, "%" + divisionType + "%");
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                int employeeId = resultSet.getInt("id");
+//                String employeeName = resultSet.getString("name");
+//                String employeeBirthday = resultSet.getString("date_of_birth");
+//                String employeeIdCard = resultSet.getString("id_card");
+//                double employeeSalary = resultSet.getInt("salary");
+//                String employeePhone = resultSet.getString("phone_number");
+//                String employeeEmail = resultSet.getString("email");
+//                String employeeAddress = resultSet.getString("address");
+//                int positionId = resultSet.getInt("position_id");
+//                int educationDegreeId = resultSet.getInt("education_degree_id");
+//                int divisionId = resultSet.getInt("division_id");
+//
+//                employeeList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+//                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId));
+//            }
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//        return employeeList;
     }
 
     @Override
@@ -250,6 +241,24 @@ public class houseHoldRepo implements IRepoHouseHold {
 //            throwables.printStackTrace();
 //        }
 //        return divisionMap;
+        return null;
+    }
+
+    @Override
+    public Map<Integer, String> findDivision() {
+//        Map<Integer, String> mapDivision = new HashMap<>();
+//        Connection connection = BaseRepository.getConnectDB();
+//        try {
+//            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_DIVISION);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                mapDivision.put(resultSet.getInt("id"), resultSet.getString("name"));
+//            }
+//
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//        return mapDivision;
         return null;
     }
 }

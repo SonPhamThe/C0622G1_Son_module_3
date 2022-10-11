@@ -17,12 +17,12 @@ public interface IRepoHouseHold {
     Map<Integer, List<member>> getListHouseHold() throws SQLException;
 // cách của anh Quang
     List<houseHold> searchHouseHold(String searchName, String searchDate, String searchAddress);
-    List<houseHold> searchHouseHoldTwo(String searchName, String searchDate);
-    List<houseHold> searchHouseHoldOne(String searchName);
 
     Map<Integer, String> selectAllPosition();
 
     Map<Integer, String> selectAllEducationDegree();
 
     Map<Integer, String> selectAllDivision();
+
+    Map<Integer, String> findDivision();
 }
