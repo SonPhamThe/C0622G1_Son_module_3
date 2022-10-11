@@ -41,18 +41,18 @@ public class RepoEmployee implements IRepoEmployee {
             while (result.next()) {
                 int id = result.getInt("id");
                 String name = result.getString("name");
-                String dateOfBirth = result.getString("dateOfBirth");
-                String idCard = result.getString("idCard");
-                Double salary = Double.valueOf(result.getString("salary"));
-                String phoneNumber = result.getString("phoneNumber");
+                String dateOfBirth = result.getString("date_of_birth");
+                String idCard = result.getString("id_card");
+                double salary = Double.parseDouble(result.getString("salary"));
+                String phoneNumber = result.getString("phone_number");
                 String email = result.getString("email");
                 String address = result.getString("address");
-                int educationDegreeId = Integer.parseInt(result.getString("educationDegreeId"));
-                int positionId = Integer.parseInt(result.getString("positionId"));
-                int divisionId = Integer.parseInt(result.getString("divisionId"));
+                int educationDegreeId = Integer.parseInt(result.getString("education_degree_id"));
+                int positionId = Integer.parseInt(result.getString("position_id"));
+                int divisionId = Integer.parseInt(result.getString("division_id"));
                 String username = result.getString("username");
 
-                employees.add(new Employee(id, name, dateOfBirth, idCard, salary, phoneNumber, email, address, educationDegreeId, positionId, divisionId, username));
+                employees.add(new Employee(id,name,dateOfBirth,idCard,salary,phoneNumber,email,address,educationDegreeId,positionId,divisionId,username));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -199,7 +199,7 @@ public class RepoEmployee implements IRepoEmployee {
         int positionId = rs.getInt("position_id");
         int divisionId = rs.getInt("division_id");
 
-        return new Employee(id, name, birthday, idCard, salary, phoneNumber, email, address, positionId, educationDegreeId, divisionId);
+        return new Employee(id,name,birthday,idCard,salary,phoneNumber,email,address,educationDegreeId,positionId,divisionId);
     }
 
     public static Map<Integer, String> findPosition() {

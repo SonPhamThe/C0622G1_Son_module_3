@@ -50,13 +50,10 @@
                 <a href="/pages">Home</a>
             </li>
             <li class="list__item d-flex justify-content-center align-items-center">
-                <a href="#">A</a>
+                <a href="/houses?action=page">House Hold</a>
 
             </li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="#">B</a></li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="#">C</a>
-            </li>
-            <li class="list__item d-flex justify-content-center align-items-center"><a href="#">D</a></li>
+            <li class="list__item d-flex justify-content-center align-items-center"><a href="#">MemBer</a></li>
         </ul>
     </div>
 </section>

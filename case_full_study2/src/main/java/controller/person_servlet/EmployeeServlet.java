@@ -80,7 +80,7 @@ public class EmployeeServlet extends HttpServlet {
         int educationDegreeId = Integer.parseInt(req.getParameter("educationDegreeId"));
         int positionId = Integer.parseInt(req.getParameter("positionId"));
         int divisionId = Integer.parseInt(req.getParameter("divisionId"));
-        Employee newEmployee = new Employee(id, name, dateOfBirth, idCard, salary, phoneNumber, email, address, positionId, educationDegreeId, divisionId);
+        Employee newEmployee = new Employee(name, dateOfBirth, idCard, salary, phoneNumber, email, address, educationDegreeId, positionId, divisionId);
         employeeService.update(newEmployee);
         try {
             req.getRequestDispatcher("/view/employee/edit_employee.jsp").forward(req, resp);
@@ -103,7 +103,7 @@ public class EmployeeServlet extends HttpServlet {
         int divisionId = Integer.parseInt(req.getParameter("divisionId"));
         String username = req.getParameter("username");
 
-        employeeService.add(new Employee(name, dateOfBirth, idCard, salary, phoneNumber, email, address, educationDegreeId, positionId, divisionId, username));
+        employeeService.add(new Employee (name, dateOfBirth, idCard, salary, phoneNumber, email, address, educationDegreeId, positionId, divisionId, username));
         req.setAttribute("mess", "ADD SUCCESS");
         try {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/view/employee/add_employee.jsp");
